@@ -1,0 +1,21 @@
+<!-- author：广州银云信息科技有限公司 -->
+<div class="inside-sidebar">
+    <div class="common-sidebar" ng-class="{'no-child-div':!$ctrl.data.info.current.childList||$ctrl.shrinkObject.isShrink}">
+        <ul>
+            <a class="shrink-a" >
+                <li class="title-li" ng-click="$ctrl.data.fun.shrink()"><span class="iconfont" ng-class="{'icon-zuojiantou':!$ctrl.shrinkObject.isShrink,'icon-youjiantou2-copy':$ctrl.shrinkObject.isShrink}"></span></li>
+            </a>
+            <a data-ng-repeat='item in $ctrl.data.info.menu' data-ng-click="$ctrl.data.fun.menu({item:item})" ng-init="$ctrl.data.fun.initMenu({item:item})">
+                <li class="item-li" ui-sref-active="elem-active">
+                    <span ui-sref="{{item.sref}}"></span>
+                    <span class="pull-left title-icon iconfont {{item.icon}}">   
+                        </span>
+                    <span class="pull-left triangle-left"></span>
+                    <span class="group-name">
+                            {{item.name}}
+                        </span>
+                </li>
+            </a>
+        </ul>
+    </div>
+</div>

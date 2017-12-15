@@ -1,0 +1,57 @@
+<div class="common-table-div">
+    <header>
+        <ul class="title-ul">
+            <li class="btn-group-li">
+                <a class="eo-button-success common-btn" data-ng-click="$ctrl.data.fun.edit()">
+                        <span class="iconfont icon-tianjia"></span>{{'01200'|translate}}
+                    </a>
+                <a class="common-btn default-btn" data-ng-click="$ctrl.data.fun.import()">
+                        <span class="iconfont icon-shangchuan"></span>{{'01201'|translate}}
+                    </a>
+            </li>
+        </ul>
+    </header>
+    <article class="first-level-article">
+        <table>
+            <thead>
+                <tr>
+                    <th class="first-th">{{'01202'|translate}}</th>
+                    <th class="second-th">{{'01203'|translate}}</th>
+                    <th class="second-th">{{'01204'|translate}}</th>
+                    <th class="third-th">{{'01205'|translate}}</th>
+                    <th class="forth-th">{{'01206'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat='item in $ctrl.data.interaction.response.query' data-ng-click="$ctrl.data.fun.enter({item:item})">
+                    <th>
+                        {{item.projectName}}
+                    </th>
+                    <td><span >V&nbsp;{{item.projectVersion}}</span></td>
+                    <td ng-switch="item.projectType">
+                        <span  ng-switch-when=0>Web</span>
+                        <span ng-switch-when=1>App</span>
+                        <span  ng-switch-when=2>PC</span>
+                        <span  ng-switch-when=3>{{'01207'|translate}}</span>
+                        <span  ng-switch-when=4>{{'01208'|translate}}</span>
+                    </td>
+                    <td>{{item.projectUpdateTime}}</td>
+                    <td>
+                        <div ng-if="item.userType<=1">
+                            <a class="home-function-delete" data-ng-click="$ctrl.data.fun.edit({item:item,$index:$index,$event:$event})"><span class="iconfont icon-bianji"></span>{{'01209'|translate}}</a>
+                            <a class="home-function-delete" data-ng-click="$ctrl.data.fun.dump({item:item,$event:$event})"><span class="iconfont icon-xiazai"></span>{{'012010'|translate}}</a>
+                            <a class="home-function-delete" data-ng-click="$ctrl.data.fun.delete({item:item,$index:$index,$event:$event})" ng-if="item.userType==0"><span class="iconfont icon-shanchu"></span>{{'012011'|translate}}</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="eo-none-tr" ng-if="$ctrl.data.interaction.response.query.length==0">
+                    <td colspan="5">{{'012012'|translate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <footer>
+        <div load-directive="$ctrl.data.fun.init(arg)">
+        </div>
+    </footer>
+</div>

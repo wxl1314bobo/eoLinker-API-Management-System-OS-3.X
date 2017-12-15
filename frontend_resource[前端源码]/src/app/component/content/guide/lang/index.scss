@@ -1,0 +1,25 @@
+.guide-lang {
+    background-color: #fff;
+    box-shadow: 0px 10px 15px #dcdcdc;
+    border-radius: 5px;
+    padding: 25px 25px;
+    @include eo-line(300px,250px);
+    p {
+        @include eo-line(20px,33px);
+        text-align: center;
+        text-indent: -10px;
+    }
+    .cn {
+        font-size: 18px;
+        font-family: fantasy;
+    }
+    .item-div {
+        @include eo-width(33%,0px);
+        text-align: center;
+        a:hover {
+            color: $buttonSuccessFocusBgColor;
+            text-decoration: underline;
+        }
+    }
+}
+

@@ -1,0 +1,31 @@
+home-project-inside-code-sidebar {
+    .home-project-inside-sidebar {
+        @extend %GROUP-SIDEBAR-STYLE;
+        .sort-group-li {
+            .group-li {
+                cursor: move;
+                .group-name {
+                    cursor: move;
+                }
+            }
+            .child-group-div {
+                .api-list-li {
+                    padding-left: 0;
+                    width: 100%;
+                    .group-name {
+                        text-indent: 29px;
+                    }
+                }
+            }
+        }
+        .sv-helper {
+            background-color: #eee;
+            * {
+                background-color: #eee;
+            }
+        }
+        .child-group-div {
+            @extend %CHILD-GROUP-SIDEBAR-STYLE;
+        }
+    }
+}

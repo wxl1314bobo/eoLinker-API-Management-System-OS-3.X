@@ -1,0 +1,93 @@
+<!-- author：广州银云信息科技有限公司 -->
+<div ng-if="$ctrl.data.info.sidebarShow">
+    <div class="home-project-inside-sidebar ">
+        <article class="sidebar-article-0">
+            <ul class="title-ul">
+                <li class="btn-group-li" ng-if="$ctrl.powerObject.readWrite">
+                    <a class="eo-button-success common-btn" data-ng-click="$ctrl.data.fun.edit.parent()" class="pull-left" ng-hide="$ctrl.data.info.sort.isDisable">
+                        <span class="iconfont icon-tianjia"></span><span class="btn-name">{{'0121400'|translate}}</span>
+                    </a>
+                    <a class="common-btn default-btn" data-ng-click="$ctrl.data.fun.sort.copy()" ng-hide="$ctrl.data.info.sort.isDisable">
+                        <span class="tips-span">{{'0121401'|translate}}</span><span class="pull-left triangle-bottom"></span>
+                        <span class="iconfont icon-paixu"></span>
+                    </a>
+                    <a class="common-btn default-btn" data-ng-click="$ctrl.data.fun.sort.confirm()" ng-show="$ctrl.data.info.sort.isDisable" class="pull-left">
+                        <span class="tips-span">{{'0121402'|translate}}</span><span class="pull-left triangle-bottom"></span>
+                        <span class="iconfont icon-check"></span>
+                    </a>
+                    <a class="common-btn default-btn" data-ng-click="$ctrl.data.fun.sort.cancle()" ng-show="$ctrl.data.info.sort.isDisable">
+                        <span class="tips-span">{{'0121403'|translate}}</span><span class="pull-left triangle-bottom"></span>
+                        <span class="iconfont icon-close"></span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="group-ul group-form-ul" sv-root sv-part="$ctrl.data.info.sort.originQuery" ng-show="$ctrl.data.info.sort.isDisable">
+                <li class="title-li"><b>{{'0121404'|translate}}</b></li>
+                <li class="item-li">
+                    <ul>
+                        <li class="sort-group-li " data-ng-repeat='item in $ctrl.data.info.sort.originQuery track by $index' sv-element="$ctrl.data.info.sort.groupForm">
+                            <div class="group-li" sv-handle>
+                                <span class="title-icon iconfont icon-xiangxia" ng-if="item.childGroupList.length>0"></span>
+                                <span class="group-name pull-left" ng-class="{'is-no-child':(!item.childGroupList)||(item.childGroupList.length<=0)}">
+                                    {{item.groupName}}
+                                </span>
+                            </div>
+                            <div class="child-group-div">
+                                <ul class="child-group-form-ul" sv-root sv-part="item.childGroupList">
+                                    <li class="group-li api-list-li" data-ng-repeat='childItem in item.childGroupList  track by $index' sv-element="$ctrl.data.info.sort.groupForm.child" sv-handle>
+                                        <span class="group-name pull-left child-group-name">
+                                            {{childItem.groupName}}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="group-ul" ng-hide="$ctrl.data.info.sort.isDisable">
+                <li class="title-li"><b>{{'0121404'|translate}}</b></li>
+                <li class="item-li">
+                    <ul>
+                        <li class="background-group-li" ng-class="{'elem-active':item.groupID==$ctrl.data.interaction.request.groupID}" data-ng-repeat='($outerIndex,item) in $ctrl.data.interaction.response.query  track by $index' ng-init="$outerIndex = $index">
+                            <div class="group-li" data-ng-click="$ctrl.data.fun.click.parent({item:item})" ng-switch="$index">
+                                <span class="title-icon iconfont icon-sort" ng-switch-when="0"></span>
+                                <span class="title-icon iconfont " ng-class="{'icon-xiangyou':(item.groupID!=$ctrl.data.interaction.request.groupID||!item.isSpreed)&&item.childGroupList.length>0,'icon-xiangxia':item.groupID==$ctrl.data.interaction.request.groupID&&item.childGroupList.length>0&&item.isSpreed}" ng-switch-default ng-click="$ctrl.data.fun.spreed({item:item,$event:$event})"></span>
+                                <span class="group-name" ng-class="{'pull-left':item.groupID>0,'is-no-child':(!item.childGroupList)||(item.childGroupList.length<=0)}">
+                                    {{item.groupName}}
+                                </span>
+                                <span class="active " ng-if="item.groupID>0&&$ctrl.powerObject.readWrite" data-ng-click="$ctrl.data.fun.more({item:item,$event:$event})">
+                                    <a class="iconfont icon-caidan"  data-ng-mouseleave="item.listIsClick=false">
+                                        <ul class="sidebar-function" data-ng-class="{'envFirst':$first}" ng-show="item.listIsClick">
+                                            <li class="add-child-btn" data-ng-click="$ctrl.data.fun.edit.child({$outerIndex:$outerIndex,isEdit:false})">{{'0121405'|translate}}</li>
+                                            <li data-ng-click="$ctrl.data.fun.edit.parent({item:item})">{{'0121406'|translate}}</li>
+                                            <li data-ng-click="$ctrl.data.fun.delete.parent({item:item,$index:$index})">{{'0121407'|translate}}</li>
+                                        </ul>
+                                    </a>
+                                </span>
+                            </div>
+                            <div class="child-group-div" ng-show="item.groupID==$ctrl.data.interaction.request.groupID&&item.isSpreed" ng-init="item.isSpreed=true;">
+                                <ul>
+                                    <li class="group-li api-list-li" data-ng-repeat='childItem in item.childGroupList' ng-class="{'elem-active':childItem.groupID==$ctrl.data.interaction.request.childGroupID}" data-ng-click="$ctrl.data.fun.click.child({item:childItem})">
+                                        <span class="group-name pull-left child-group-name">
+                                            {{childItem.groupName}}
+                                        </span>
+                                        <span class="active " ng-if="$ctrl.powerObject.readWrite" data-ng-click="$ctrl.data.fun.more({item:item,$event:$event})">
+                                            <a class="iconfont icon-caidan"  data-ng-mouseleave="item.listIsClick=false">
+                                                <ul class="sidebar-function" data-ng-class="{'envFirst':$first}" ng-show="item.listIsClick">
+                                                    <li data-ng-click="$ctrl.data.fun.edit.child({item:childItem,$outerIndex:$outerIndex,isEdit:true})">{{'0121406'|translate}}</li>
+                                                    <li data-ng-click="$ctrl.data.fun.delete.child({item:item,childItem:childItem,$index:$index})">{{'0121407'|translate}}</li>
+                                                </ul>
+                                            </a>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </article>
+        <footer></footer>
+    </div>
+</div>

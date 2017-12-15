@@ -1,0 +1,42 @@
+<div class="database-sidebar ">
+    <article>
+        <ul class="title-ul" ng-if="$ctrl.powerObject.readWrite">
+            <li class="btn-group-li" >
+                <ul>
+                    <a class="eo-button-success common-btn" data-ng-click="$ctrl.data.fun.edit()">
+                        <span class="iconfont icon-tianjia"></span><span class="btn-name">{{'010120'|translate}}</span>
+                    </a>
+                    <a class="common-btn default-btn" data-ng-click="$ctrl.data.fun.import()">
+                        <span class="tips-span">{{'010121'|translate}}</span><span class="pull-left triangle-bottom"></span>
+                        <span class="iconfont icon-shangchuan"></span>
+                    </a>
+                    <a class="common-btn default-btn" data-ng-click='$ctrl.data.fun.dump()'>
+                        <span class="tips-span">{{'010122'|translate}}</span><span class="pull-left triangle-bottom"></span>
+                        <span class="iconfont icon-xiazai"></span>
+                    </a>
+                </ul>
+            </li>
+        </ul>
+        <ul class="group-ul">
+            <li class="title-li"><b>{{'010123'|translate}}</b></li>
+            <li class="item-li">
+                <ul>
+                    <li class="background-group-li" data-ng-repeat='item in $ctrl.data.interaction.response.query' ng-class="{'elem-active':item.tableID==$ctrl.data.interaction.request.tableID}" data-ng-click="$ctrl.data.fun.click({item:item})">
+                        <div class="group-li">
+                            <span class="group-name pull-left">{{item.tableName}}</span>
+                            <span class="active " ng-if="$ctrl.powerObject.readWrite">
+                                <a class="iconfont icon-caidan" data-ng-click="$ctrl.data.fun.more({item:item,$event:$event})" data-ng-mouseleave="item.listIsClick=false">
+                                    <ul class="sidebar-function" ng-show="item.listIsClick" data-ng-class="{'first-sidebar-function':$first}">
+                                        <li data-ng-click="$ctrl.data.fun.edit({item:item})">{{'010124'|translate}}</li>
+                                        <li data-ng-click="$ctrl.data.fun.delete({item:item,$index:$index})">{{'010125'|translate}}</li>
+                                    </ul>
+                                </a>
+                            </span>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </article>
+    <footer></footer>
+</div>

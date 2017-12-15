@@ -1,0 +1,518 @@
+home-project-inside {
+    .home-project-inside {
+        .home-project-inside-content {
+            home-project-inside-api-edit {
+                .home-project-inside-edit {
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+home-project-inside-api-edit {
+    %API-EDIT-NUMBER-STYLE {
+        width: 25px;
+        @include eo-line(25px);
+        border-radius: 3px;
+        background-color: #f2f2f2;
+        color: #9e9e9e;
+        display: inline-block;
+        text-align: center;
+        border: 1px solid #e5e5e5;
+    }
+    %API-EDIT-TIPS-STYLE {
+        position: absolute;
+        display: none;
+        @include eo-line(30px);
+        padding: 0 10px;
+        margin-top: -40px;
+        font-weight: initial;
+        box-shadow: 0 6px 15px rgba(67, 160, 71, 0.18);
+        font-size: 12px;
+        .triangle-li {
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-top: 10px solid #4CAF50;
+            border-right: 8px solid transparent;
+            position: absolute;
+        }
+    }
+    %API-EDIT-TABLE-STYLE {
+        width: 100%;
+        border-spacing: 0;
+        table-layout: fixed;
+        td,
+        th {
+            font-size: 14px;
+            height: 40px;
+            line-height: 20px;
+            padding-left: 10px;
+            cursor: default;
+        }
+        thead {
+            background-color: #fafafa;
+            tr {
+                .num-td {
+                    width: 50px;
+                }
+            }
+        }
+        tbody {
+            .number-label {
+                @extend %API-EDIT-NUMBER-STYLE;
+            }
+            .icon-shanchu {
+                &:hover {
+                    background-color: #D32F2F;
+                    color: #fff;
+                    border: 1px solid #C62828;
+                }
+            }
+            .radio-input {
+                border: 1px solid #e5e5e5;
+                @include eo-line(23px);
+                width: 23px;
+                font-size: 13px;
+                margin-right: 4px;
+                cursor: pointer;
+                display: inline-block;
+                text-align: center;
+                border-radius: 3px;
+            }
+            tr {
+                td {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    height: 50px;
+                }
+                &:nth-last-child(n+2) {
+                    td,
+                    th {
+                        border-bottom: 1px dashed #e5e5e5;
+                    }
+                }
+                &:first-child {
+                    td,
+                    th {
+                        border-top: 1px solid #e5e5e5;
+                    }
+                }
+            }
+        }
+    }
+    %API-EDIT-HEADER-NAV-STYLE {
+        padding: 10px 10px 12px 10px;
+        @include eo-line(30px, 29px);
+        .send-format {
+            color: $buttonInfoFocusBgColor;
+            text-align: center;
+            font-size: 14px;
+            @include eo-line(30px);
+            border: 1px solid #bcdffb;
+            width: 100px;
+            background-color: #e3f7ff;
+            &:hover {
+                background-color: $buttonInfoFocusBgColor;
+                color: #fff;
+                * {
+                    color: #fff;
+                }
+            }
+        }
+        .test-nav-li {
+            text-align: center;
+            min-width: 80px;
+            padding: 0 10px;
+            font-weight: initial;
+            font-size: 14px;
+            @include eo-line(28px);
+            background-color: #edf7ee;
+            cursor: pointer;
+            color: $buttonSuccessBorderColor;
+            border: 1px solid #b2d8b6;
+            &:hover {
+                background-color: $buttonSuccessBgColor;
+                border-color: $buttonSuccessFocusBgColor;
+                color: #fff;
+            }
+        }
+        .success-li {
+            border-radius: 3px 0 0 3px;
+            border-right: none;
+        }
+        .failure-li {
+            border-radius: 0 3px 3px 0;
+            border-left: none;
+            margin-right: 5px;
+        }
+        .active {
+            background-color: $buttonSuccessFocusBgColor;
+            border-color: $buttonSuccessFocusBgColor;
+            color: #fff;
+        }
+    }
+    .home-project-inside-edit {
+        z-index: 0;
+        margin-left: 180px;
+        header {
+            .title-ul {
+                @extend %COMMON-TITLE-UL;
+                @extend %COMMON-MENU-LI;
+                .btn-group-li {
+                    .default-btn {
+                        margin-left: 10px;
+                    }
+                    .last-btn {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+        .first-level-article {
+            padding: 0 10px;
+            .eo-input {
+                @include eo-line(28px);
+            }
+            .first-part {
+                padding: 0 10px 6px 10px;
+                padding-top: 0;
+                min-height: 50px;
+                background-color: #fff;
+                margin-top: 10px;
+                border: 1px solid #e5e5e5;
+                border-radius: 3px;
+                input {
+                    @include eo-line(28px);
+                    width: 100%;
+                }
+                li {
+                    @include eo-line(30px);
+                    span {
+                        font-size: 14px;
+                    }
+                    span {
+                        font-weight: bold;
+                    }
+                    .center-span {
+                        margin: 0 5px;
+                    }
+                }
+                select {
+                    width: auto;
+                    text-indent: 0;
+                    margin-right: 5px;
+                    @include eo-line(30px);
+                    padding: 0 5px;
+                }
+                .api-message-send {
+                    margin-top: 10px;
+                    .pull-right {
+                        margin-right: 10px;
+                        .iconfont {
+                            color: #ccc;
+                        }
+                        .icon-favorfill {
+                            color: #f48932;
+                        }
+                    }
+                    .first-select-li {
+                        width: 50px;
+                    }
+                }
+                .api-message-url,
+                .api-message-name {
+                    font-size: 14px;
+                    clear: both;
+                    margin-top: 10px;
+                    li:last-child {
+                        margin: 0 10px 0 50px;
+                    }
+                }
+            }
+            .item-part {
+                border: 1px solid #e5e5e5;
+                margin-top: 10px;
+                border-radius: 3px;
+                background-color: #fff;
+                .title-p {
+                    @include eo-line(40px);
+                    border-bottom: 1px solid #e5e5e5;
+                    padding-left: 10px;
+                    b {
+                        font-size: 14px;
+                        color: $buttonSuccessBgColor;
+                    }
+                }
+                .elem-hover-li {
+                    background-color: #fff;
+                    &:hover,
+                    &:focus,
+                    &:active,
+                    &:visited {
+                        background-color: #f5f5f5;
+                    }
+                }
+                .sv-helper {
+                    background-color: #f5f5f5;
+                    border-bottom: 1px solid #e5e5e5;
+                }
+            }
+            .request-header-part {
+                header {
+                    @extend %API-EDIT-HEADER-NAV-STYLE;
+                    border-bottom: 1px solid #e5e5e5;
+                }
+                table {
+                    @extend %API-EDIT-TABLE-STYLE;
+                    .request-header-label {
+                        width: 300px;
+                    }
+                    .operation-td {
+                        width: 100px;
+                    }
+                    tbody {
+                        .eo-input {
+                            @include eo-width(100%, 12px);
+                            padding-right: 10px;
+                        }
+                        select {
+                            @include eo-width(100%, 2px);
+                        }
+                        .label-td {
+                            .icon-xiangxia {
+                                position: absolute;
+                                margin-left: -26px;
+                                display: inline-block;
+                                height: 35px;
+                                line-height: 35px;
+                            }
+                            .auto-complete-message {
+                                line-height: 20px;
+                                border-top: none;
+                                text-indent: 10px;
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+            .request-param-part {
+                header {
+                    @extend %API-EDIT-HEADER-NAV-STYLE;
+                    border-bottom: 1px solid #e5e5e5;
+                }
+                table {
+                    @extend %API-EDIT-TABLE-STYLE;
+                    .request-param-label {
+                        width: 30px;
+                    }
+                    .type-td {
+                        width: 130px;
+                        select {
+                            text-indent: 0;
+                        }
+                    }
+                    .name-td {
+                        width: 300px;
+                    }
+                    .operation-td {
+                        width: 150px;
+                        .get-more-btn {
+                            padding: 0 5px;
+                            font-size: 12px;
+                            @include eo-line(27px);
+                        }
+                    }
+                    tbody {
+                        .eo-input {
+                            @include eo-width(100%, 12px);
+                            padding-right: 10px;
+                        }
+                    }
+                }
+                .back-result-content {
+                    min-height: 230px;
+                    max-height: 500px;
+                    overflow: auto;
+                    border: 1px solid #e5e5e5;
+                    margin: 5px;
+                    border-radius: 3px;
+                    padding: 5px;
+                    line-height: 20px;
+                    font-size: 12px;
+                    max-width: 100%;
+                    @include eo-width(100%, 22px);
+                    word-break: break-all;
+                    white-space: pre-wrap;
+                }
+            }
+            .response-param-part {
+                header {
+                    @extend %API-EDIT-HEADER-NAV-STYLE;
+                    border-bottom: 1px solid #e5e5e5;
+                }
+                table {
+                    @extend %API-EDIT-TABLE-STYLE;
+                    .request-param-label {
+                        width: 30px;
+                    }
+                    .type-td {
+                        width: 130px;
+                        select {
+                            text-indent: 0;
+                        }
+                    }
+                    .name-td {
+                        width: 300px;
+                    }
+                    .operation-td {
+                        width: 150px;
+                        .get-more-btn {
+                            padding: 0 5px;
+                            font-size: 12px;
+                            @include eo-line(27px);
+                        }
+                    }
+                    tbody {
+                        .eo-input {
+                            @include eo-width(100%, 12px);
+                            padding-right: 10px;
+                        }
+                    }
+                }
+            }
+            .response-example-part {
+                margin-bottom: 10px;
+                header {
+                    @extend %API-EDIT-HEADER-NAV-STYLE;
+                }
+                article {
+                    min-height: 237px;
+                    line-height: 0;
+                    .back-result-content {
+                        min-height: 230px;
+                        max-height: 500px;
+                        overflow: auto;
+                        border: 1px solid #e5e5e5;
+                        margin: 0 10px 10px 10px;
+                        border-radius: 3px;
+                        padding: 5px;
+                        line-height: 20px;
+                        font-size: 12px;
+                        max-width: 100%;
+                        @include eo-width(100%, 32px);
+                        word-break: break-all;
+                        white-space: pre-wrap;
+                    }
+                }
+            }
+            .remark-part {
+                margin-bottom: 10px;
+                header {
+                    @extend %API-EDIT-HEADER-NAV-STYLE;
+                }
+                article {
+                    min-height: 237px;
+                    line-height: 0;
+                    padding: 0 12px 10px 10px;
+                    .back-result-content {
+                        min-height: 230px;
+                        max-height: 500px;
+                        overflow: auto;
+                        border: 1px solid #e5e5e5;
+                        margin: 5px;
+                        border-radius: 3px;
+                        padding: 5px;
+                        line-height: 20px;
+                        font-size: 12px;
+                        max-width: 100%;
+                        @include eo-width(100%, 22px);
+                        word-break: break-all;
+                        white-space: pre-wrap;
+                    }
+                    .wangEditor-container,
+                    .editormd {
+                        border-radius: 3px;
+                    }
+                    .wangEditor-txt {
+                        min-height: 400px;
+                    }
+                }
+            }
+            .mock-part {
+                header {
+                    @extend %API-EDIT-HEADER-NAV-STYLE;
+                    border-bottom: 1px solid #e5e5e5;
+                }
+                table {
+                    @extend %API-EDIT-TABLE-STYLE;
+                    .type-td {
+                        width: 130px;
+                        select {
+                            text-indent: 0;
+                        }
+                    }
+                    .value-td {
+                        padding-right: 5px;
+                    }
+                    .name-td {
+                        width: 300px;
+                    }
+                    tbody {
+                        .eo-input {
+                            @include eo-width(100%, 12px);
+                            padding-right: 10px;
+                        }
+                    }
+                }
+            }
+            .mock-data-part {
+                margin-bottom: 10px;
+                header {
+                    @extend %API-EDIT-HEADER-NAV-STYLE;
+                }
+                article {
+                    min-height: 237px;
+                    line-height: 0;
+                    .back-result-content {
+                        min-height: 230px;
+                        max-height: 500px;
+                        overflow: auto;
+                        border: 1px solid #e5e5e5;
+                        margin: 0 10px 10px 10px;
+                        border-radius: 3px;
+                        padding: 5px;
+                        line-height: 20px;
+                        font-size: 12px;
+                        max-width: 100%;
+                        @include eo-width(100%, 32px);
+                        word-break: break-all;
+                        white-space: pre-wrap;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1310px) {
+    .home-project-inside home-project-inside-api-edit .home-project-inside-edit article .request-param-part article .form-ul .request-param-info {
+        .request-type-select-li {
+            margin-right: 0;
+        }
+        .go-more-btn-group {
+            margin-right: 0;
+            .go-more {
+                width: 22px;
+                text-indent: 0;
+                span {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+

@@ -1,0 +1,328 @@
+<div class="home-project-inside-test home-project-inside-div">
+    <header>
+        <ul class="title-ul">
+            <li class="btn-group-li pull-left">
+                <a class="common-btn default-btn" ui-sref="home.project.inside.api.list({groupID: $ctrl.data.interaction.request.groupID,childGroupID:$ctrl.data.interaction.request.childGroupID })">
+                    <span class="iconfont icon-xiangzuo"></span>{{'01210030'|translate}}
+                </a>
+            </li>
+            <li class="menu-li pull-left">
+                <a ui-sref="home.project.inside.api.detail({ groupID: $ctrl.data.interaction.request.groupID,childGroupID:$ctrl.data.interaction.request.childGroupID,apiID:$ctrl.data.interaction.request.apiID })" class="pull-left ">{{'01210031'|translate}}
+                    </a>
+                <a class="pull-left elem-active" data-ng-click="$ctrl.data.fun.test()">{{'01210032'|translate}}
+                    </a>
+            </li>
+            <li class="btn-li common-btn default-btn" ng-if="$ctrl.powerObject.readWrite">
+                <span class="iconfont icon-caidan"></span> {{'01210033'|translate}}
+                <div class="list-function-wrap">
+                    <ul class="nav-function" ng-if="$ctrl.data.interaction.request.groupID!=-2">
+                        <li ui-sref="home.project.inside.api.edit($ctrl.data.interaction.request)"><span class="iconfont icon-bianji"></span>{{'01210034'|translate}}</li>
+                        <li ui-sref="home.project.inside.api.edit({groupID:$ctrl.data.interaction.request.groupID, childGroupID:$ctrl.data.interaction.request.childGroupID,apiID:$ctrl.data.interaction.request.apiID, type: 2 })">
+                            <span class="iconfont icon-renwuguanli"></span>{{'01210035'|translate}}
+                        </li>
+                        <li data-ng-click="$ctrl.data.fun.delete()">
+                            <span class="iconfont icon-shanchu"></span>{{'01210036'|translate}}
+                        </li>
+                    </ul>
+                    <ul class="nav-function" ng-if="$ctrl.data.interaction.request.groupID==-2">
+                        <li data-ng-click="$ctrl.data.fun.recover()">
+                            <span class="iconfont icon-shuaxin"></span>{{'01210037'|translate}}
+                        </li>
+                        <li data-ng-click="$ctrl.data.fun.deleteCompletely()">
+                            <span class="iconfont icon-shanchu"></span>{{'01210038'|translate}}
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </header>
+    <article class="first-level-article" ng-switch="$ctrl.data.service.$window.plug.type">
+        <ul class="tips-ul warning-ul" ng-switch-default>
+            <li class="title-li pull-left">{{'01210039'|translate}}</li>
+            <li>{{'012100310'|translate}} <a href="https://www.eolinker.com/#/plug/introduce" target="_blank"><b>{{'012100311'|translate}}</b> [{{'012100312'|translate}}]</a>！</li>
+        </ul>
+        <ul class="tips-ul common-ul" ng-switch-when='application/eolinker'>
+            <li class="title-li pull-left">{{'01210039'|translate}}</li>
+            <li>{{'012100313'|translate}}</li>
+        </ul>
+        <div class="first-part">
+            <form name="testForm">
+                <ul>
+                    <li>
+                        <ul class="api-message-send">
+                            <li class="pull-left http-header-li ">
+                                <select class="eo-input" data-ng-model="$ctrl.data.service.home.envObject.object.model.httpHeader">
+                                    <option value="0">HTTP</option>
+                                    <option value="1">HTTPS</option>
+                                </select>&nbsp;:
+                            </li>
+                            <li class="uri-input-li">
+                                <input class="eo-input pull-left" type="text" placeholder="{{'012100335'|translate}}" data-ng-model="$ctrl.data.service.home.envObject.object.model.URL" name="uri" data-ng-class="{'eo-input-error':($ctrl.submited&&testForm.uri.$invalid)}" required ng-focus="$ctrl.data.info.uri.isFocus=true;" ng-blur="$ctrl.data.fun.blurInput({focus:$ctrl.data.info.uri})">
+                                <a ng-if="$ctrl.data.info.uri.isFocus" class="iconfont icon-index-magicwand" data-ng-click="$ctrl.data.fun.expressionBuilder({'item':$ctrl.data.service.home.envObject.object.model,'$index':0})"></a>
+                            </li>
+                            <li class="pull-right">
+                                <div class="send-btn" test-directive message="$ctrl.data.service.home.envObject.object.model" detail="$ctrl.data.interaction.response.apiInfo" result="$ctrl.data.info.response" format="$ctrl.data.info.format" test-form="testForm" info="$ctrl.data.interaction.request" is-plug="$ctrl.isPlug" env-param="$ctrl.data.service.home.envObject.object.param" json="$ctrl.data.info.toJson" auth="$ctrl.data.info.auth"></div>
+                            </li>
+                            <li class="pull-right method-li">
+                                <select class="eo-input " ng-model="$ctrl.data.interaction.response.apiInfo.baseInfo.type" data-ng-change="$ctrl.data.fun.changeType()">
+                                    <option value="0">POST</option>
+                                    <option value="1">GET</option>
+                                    <option value="2">PUT</option>
+                                    <option value="3">DELETE</option>
+                                    <option value="4">HEAD</option>
+                                    <option value="5">OPTIONS</option>
+                                    <option value="6">PATCH</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="item-part request-header-part">
+            <p class="title-p">
+                <b>{{'01210009'|translate}}</b>
+                <a class="pull-right spreed-btn" ng-click="$ctrl.data.info.spreed.header=!$ctrl.data.info.spreed.header"><span class="iconfont " ng-class="{'icon-xiangxia':!$ctrl.data.info.spreed.header,'icon-xiangshang':$ctrl.data.info.spreed.header}"></span>{{$ctrl.data.info.spreed.header?$ctrl.data.info.filter.shrink:$ctrl.data.info.filter.open}}</a>
+            </p>
+            <div ng-show="$ctrl.data.info.spreed.header">
+                <header>
+                    <ul>
+                        <li class="pull-left test-nav-li success-li" ng-class="{'active':$ctrl.data.info.header.type=='0'}" ng-click="$ctrl.data.info.header.type = '0'">Header</li>
+                        <li class="pull-left test-nav-li failure-li" ng-class="{'active':$ctrl.data.info.header.type=='1'}" ng-click="$ctrl.data.info.header.type = '1'">Auth
+                            <label ng-show="$ctrl.data.info.auth.status=='1'" class="iconfont icon-circle pull-right"></label>
+                        </li>
+                    </ul>
+                </header>
+                <article ng-show="$ctrl.data.info.header.type == '0'">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="num-td">{{'012100325'|translate}}</td>
+                                <td class="request-header-label">{{'012100116'|translate}}</td>
+                                <td>{{'012100117'|translate}}</td>
+                                <td class="operation-td">{{'012100118'|translate}}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <ul>
+                        <li data-ng-repeat="item in $ctrl.data.service.home.envObject.object.model.headers" data-ng-init="item.checkbox=true">
+                            <table ng-switch="$last">
+                                <tbody>
+                                    <td class="num-td">
+                                        <input class="hidden" type="checkbox" id="{{'header_checkbox_'+$index}}" data-ng-model="item.checkbox">
+                                        <label for="{{'header_checkbox_'+$index}}" class="eo-checkbox pull-left iconfont" data-ng-class="{'icon-check':item.checkbox}"></label>
+                                    </td>
+                                    <td class="label-td request-header-label">
+                                        <ul class="request-header-icon-form">
+                                            <li auto-complete model="item.headerName" array="$ctrl.data.constant.requestHeader" data-ng-class="{'eo-had-input-error':($ctrl.submited&&!item.headerName)}" placeholder="{{'012100119'|translate}}" input-change-fun="$ctrl.data.fun.last.header({$last:$last})" padding=2>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <input class="eo-input " type="text" name="" data-ng-model="item.headerValue" maxlength="65530" ng-focus="item.isFocus=true;" ng-blur="$ctrl.data.fun.blurInput({focus:item})" placeholder="{{'012100120'|translate}}" data-ng-change="$ctrl.data.fun.last.header({$last:$last})">
+                                        <a ng-if="item.isFocus" class="iconfont icon-index-magicwand" data-ng-click="$ctrl.data.fun.expressionBuilder({'item':item,'$index':1})"></a>
+                                    </td>
+                                    <td class="operation-td">
+                                        <label ng-switch-when=false>
+                                            <a class="iconfont icon-shanchu number-label" data-ng-click="$ctrl.data.fun.headerList.delete({$index:$index})"></a>
+                                        </label>
+                                    </td>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                </article>
+                <article class="basic-auth-article" ng-show="$ctrl.data.info.header.type =='1'">
+                    <p class="select-p">
+                        <label>{{'012100314'|translate}}</label>
+                        <select class="eo-input" placeholder="Basic Auth" ng-model="$ctrl.data.info.auth.status">
+                            <option value="0">-----{{'012100315'|translate}}-----</option>
+                            <option value="1">Basic Auth</option>
+                        </select>
+                    </p>
+                    <div ng-show="$ctrl.data.info.auth.status=='1'">
+                        <p class="common-p">
+                            <label>{{'012100316'|translate}}</label>
+                            <input class="eo-input" type="text" placeholder="Username" ng-model="$ctrl.data.info.auth.basicAuth.username">
+                        </p>
+                        <p class="common-p">
+                            <label>{{'012100317'|translate}}</label>
+                            <input class="eo-input" type="password" placeholder="Password" ng-model="$ctrl.data.info.auth.basicAuth.password">
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="item-part request-param-part">
+            <p class="title-p"><b>{{'012100121'|translate}}</b>
+                <tip-directive input="<p><b>[{{'012100326'|translate}}]</b>&nbsp;{{'012100327'|translate}}</p><p><b>[RESTful]</b>&nbsp;{{'012100328'|translate}}</p><p><b>[{{'012100123'|translate}}]</b>&nbsp;{{'012100329'|translate}}</p>"></tip-directive>
+                <a class="pull-right spreed-btn" ng-click="$ctrl.data.info.spreed.request=!$ctrl.data.info.spreed.request"><span class="iconfont " ng-class="{'icon-xiangxia':!$ctrl.data.info.spreed.request,'icon-xiangshang':$ctrl.data.info.spreed.request}"></span>{{$ctrl.data.info.spreed.request?$ctrl.data.info.filter.shrink:$ctrl.data.info.filter.open}}</a>
+            </p>
+            <div ng-show="$ctrl.data.info.spreed.request">
+                <header>
+                    <ul>
+                        <li class="pull-left test-nav-li success-li" ng-class="{'active':$ctrl.data.service.home.envObject.object.model.requestType=='0'}" data-ng-click="$ctrl.data.service.home.envObject.object.model.requestType = '0'">{{'012100122'|translate}}[form-data]</li>
+                        <li class="pull-left test-nav-li" ng-class="{'active':$ctrl.data.service.home.envObject.object.model.requestType=='2','failure-li':$ctrl.data.interaction.response.apiInfo.baseInfo.type != '0' &&$ctrl.data.interaction.response.apiInfo.baseInfo.type != '2'}" data-ng-click="$ctrl.data.service.home.envObject.object.model.requestType = '2'">RESTful</li>
+                        <li style="border-left:none;" class="pull-left test-nav-li failure-li" ng-class="{'active':$ctrl.data.service.home.envObject.object.model.requestType=='1'}" data-ng-click="$ctrl.data.service.home.envObject.object.model.requestType = '1'" ng-show="$ctrl.data.interaction.response.apiInfo.baseInfo.type == '0' || $ctrl.data.interaction.response.apiInfo.baseInfo.type == '2'">{{'012100123'|translate}}[raw]</li>
+                        <li ng-show="$ctrl.data.service.home.envObject.object.model.requestType!='1'&&($ctrl.data.interaction.response.apiInfo.baseInfo.type == '0' || $ctrl.data.interaction.response.apiInfo.baseInfo.type == '2'|| $ctrl.data.interaction.response.apiInfo.baseInfo.type == '6')">
+                            <button class="form-to-json-btn" data-ng-click="$ctrl.data.fun.json()"><span class="eo-checkbox pull-left iconfont" data-ng-class="{'icon-check':$ctrl.data.info.toJson.checkbox}"></span>{{'012100130'|translate}}[Json]</button>
+                            <tip-directive input="<p>{{'012100336'|translate}}</p>"></tip-directive>
+                        </li>
+                    </ul>
+                </header>
+                <article>
+                    <table ng-class="{'hidden':$ctrl.data.service.home.envObject.object.model.requestType=='1'}">
+                        <thead>
+                            <tr>
+                                <td class="request-param-label">{{'012100331'|translate}}</td>
+                                <td class="name-td">{{'012100017'|translate}}</td>
+                                <td class="type-td" ng-show="$ctrl.data.service.home.envObject.object.model.requestType=='0'">{{'012100020'|translate}}</td>
+                                <td>{{'012100332'|translate}}</td>
+                                <td class="operation-td">{{'012100118'|translate}}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <ul ng-hide="$ctrl.data.service.home.envObject.object.model.requestType=='1'">
+                        <li data-ng-repeat="item in $ctrl.data.service.home.envObject.object.model.params">
+                            <table ng-switch="$last">
+                                <tbody>
+                                    <td class="request-param-label">
+                                        <input class="hidden" type="checkbox" id="{{'param_checkbox_'+$index}}" data-ng-model="item.checkbox">
+                                        <label for="{{'param_checkbox_'+$index}}" class="eo-checkbox pull-left iconfont" data-ng-class="{'icon-check':item.checkbox}"></label>
+                                    </td>
+                                    <td class="name-td">
+                                        <input class="eo-input" data-ng-model="item.paramKey" data-ng-class="{'eo-input-error':($ctrl.submited&&!item.paramKey)}" maxlength="255" data-ng-change="$ctrl.data.fun.last.request({$last:$last})" placeholder="{{'012100125'|translate}}" required>
+                                    </td>
+                                    <td class="type-td" ng-show="$ctrl.data.service.home.envObject.object.model.requestType=='0'">
+                                        <select class="eo-input request-type-select" data-ng-model="item.paramType" ng-init="item.paramType=''+item.paramType;item.paramType=(item.paramType!='0'&&item.paramType!='1'?'0':item.paramType)">
+                                            <option value="0">[text]</option>
+                                            <option value="1">[file]</option>
+                                        </select>
+                                    </td>
+                                    <td class="label-td" ng-if="item.paramValueQuery.length>0" ng-show="!((item.paramType=='1'&&$ctrl.isPlug&&!$ctrl.data.info.toJson.checkbox&&$ctrl.data.service.home.envObject.object.model.requestType=='0'))" ng-init="item.paramInfo=item.paramInfo||item.paramValueQuery[item.default]" auto-complete model="item.paramInfo" array="item.paramValueQuery" placeholder="{{item.paramName}}" input-change-fun="$ctrl.data.fun.last.request({$last:$last})" expression-builder="true" padding=12>
+                                    </td>
+                                    <td ng-hide="($ctrl.data.service.home.envObject.object.model.requestType=='0'&&item.paramType=='1'&&$ctrl.isPlug&&!$ctrl.data.info.toJson.checkbox)||(item.paramValueQuery.length>0)" ng-init="item.paramInfo=item.paramInfo||item.paramValueQuery[item.default]">
+                                        <input id="{{'paramInfo_js'+$index}}" class="eo-input pull-left" data-ng-model="item.paramInfo" ng-focus="item.isFocus=true;" ng-blur="$ctrl.data.fun.blurInput({focus:item})" placeholder="{{item.paramName}}" data-ng-change="$ctrl.data.fun.last.request({$last:$last})">
+                                        <a ng-if="item.isFocus" class="iconfont icon-index-magicwand" data-ng-click="$ctrl.data.fun.expressionBuilder({'item':item,'$index':2})"></a>
+                                    </td>
+                                    <td ng-if="item.paramType=='1'&&$ctrl.isPlug&&!$ctrl.data.info.toJson.checkbox&&$ctrl.data.service.home.envObject.object.model.requestType=='0'">
+                                        <input class="eo-input pull-left" data-ng-model="item.paramInfo" disabled="true" placeholder="{{'012100333'|translate}}" title="{{item.paramInfo}}" data-ng-change="$ctrl.data.fun.last.request({$last:$last})">
+                                        <input type="file" id="request-param-file-{{$index}}" name="{{item.paramKey}}" class="eo-button-info file-btn eo-absolute" onchange="angular.element(this).scope().importFile({file:this.files})" ng-init="item.$index=$index" multiple="multiple" placeholder="{{item.paramName}}">
+                                        <label for="request-param-file-{{$index}}" class="eo-button-info  eo-absolute file-btn-label">{{'012100318'|translate}}</label>
+                                    </td>
+                                    <td class="operation-td">
+                                        <label ng-switch-when=false>
+                                            <a class="iconfont icon-shanchu number-label" data-ng-click="$ctrl.data.fun.requestList.delete({$index:$index})"></a>
+                                        </label>
+                                    </td>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                    <div class="raw-div" ng-show="$ctrl.data.service.home.envObject.object.model.requestType=='1'">
+                        <textarea class="back-result-content" data-ng-model="$ctrl.data.service.home.envObject.object.model.raw" maxlength="65530" placeholder="{{'012100123'|translate}}">
+                        </textarea>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="item-part response-example-part">
+            <p class="title-p">
+                <b>{{'012100334'|translate}}</b>
+                <a class="pull-right spreed-btn" ng-click="$ctrl.data.info.spreed.response=!$ctrl.data.info.spreed.response"><span class="iconfont " ng-class="{'icon-xiangxia':!$ctrl.data.info.spreed.response,'icon-xiangshang':$ctrl.data.info.spreed.response}"></span>{{$ctrl.data.info.spreed.response?$ctrl.data.info.filter.shrink:$ctrl.data.info.filter.open}}</a>
+            </p>
+            <div ng-show="$ctrl.data.info.spreed.response">
+                <header>
+                    <ul>
+                        <li class="pull-left test-nav-li success-li" ng-class="{'active':!$ctrl.data.info.response.isHeader}" data-ng-click="$ctrl.data.info.response.isHeader=!$ctrl.data.info.response.isHeader">body</li>
+                        <li class="pull-left test-nav-li failure-li" ng-class="{'active':$ctrl.data.info.response.isHeader}" data-ng-click="$ctrl.data.info.response.isHeader=!$ctrl.data.info.response.isHeader">header</li>
+                        <li class="pull-left" ng-hide="$ctrl.data.info.response.isHeader">
+                            <button class="eo-button-info change-type-btn send-format" arrange-format="apiResult_js" ng-model="$ctrl.data.info.format.message"><span class="iconfont icon-magic"></span>{{'012100029'|translate}}</button>
+                        </li>
+                        <li class="pull-left" ng-hide="$ctrl.data.info.response.isHeader">
+                            <button class="change-type-btn send-format eo-button-info" ng-disabled="!$ctrl.data.info.format.message" data-ng-click="$ctrl.data.fun.window()">
+                                <span class="iconfont icon-xinchuangkoudakai"></span>{{'012100319'|translate}}
+                            </button>
+                        </li>
+                        <li ng-hide="$ctrl.data.info.response.isHeader">
+                            <button class="change-type-btn send-format copy-opacity-btn " copy-directive copy-model="$ctrl.data.info.format.message" is-popup="true" switch-templet="0"></button>
+                            <button class="change-type-btn send-format eo-button-info" ng-disabled="!$ctrl.data.info.format.message">
+                                <span class="iconfont icon-renwuguanli"></span>{{'012100320'|translate}}
+                            </button>
+                        </li>
+                    </ul>
+                </header>
+                <article ng-hide="$ctrl.data.info.response.isHeader">
+                    <div class="test-httpHeader-content" ng-show="$ctrl.data.info.response.hadTest" ng-class="{'test-default':$ctrl.data.info.response.httpCodeType===1,'test-success':$ctrl.data.info.response.httpCodeType===2,'test-warning':$ctrl.data.info.response.httpCodeType===3,'test-error':$ctrl.data.info.response.httpCodeType===4||$ctrl.data.info.response.httpCodeType===5}">
+                        {{$ctrl.data.info.response.httpCodeType!=5?$ctrl.data.info.response.testHttpCode:'No&nbsp;response'}}
+                        <span class="pull-right">
+                        {{!($ctrl.data.info.response.httpCodeType===5)?'time：'+$ctrl.data.info.response.testDeny+'ms':''}}
+                    </span>
+                    </div>
+                    <pre class="back-result-content " id="apiResult_js">
+                        <span class="null-tip-span">No Response</span>
+                    </pre>
+                </article>
+                <article ng-show="$ctrl.data.info.response.isHeader">
+                    <ul class="test-header-ul" ng-switch="$ctrl.data.info.response.testResult.headers.length>0">
+                        <li ng-repeat="item in $ctrl.data.info.response.testResult.headers" ng-switch-when=true>
+                            <span class="test-header-key">{{item.key}}</span>&nbsp;:&nbsp;{{item.value}}
+                        </li>
+                        <li ng-switch-when=false><span class="null-tip-span">{{'012100322'|translate}}</span></li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+        <div class="part test-history-part" data-ng-hide="$ctrl.data.interaction.response.apiInfo.testHistory.length<=0">
+            <p class="title-p">
+            <b>{{'012100323'|translate}}</b>
+            <a class="pull-right spreed-btn" ng-click="$ctrl.data.info.spreed.history=!$ctrl.data.info.spreed.history"><span class="iconfont " ng-class="{'icon-xiangxia':!$ctrl.data.info.spreed.history,'icon-xiangshang':$ctrl.data.info.spreed.history}"></span>{{$ctrl.data.info.spreed.history?$ctrl.data.info.filter.shrink:$ctrl.data.info.filter.open}}</a>
+            </p>
+            <div ng-show="$ctrl.data.info.spreed.history">
+                <header>
+                    <ul>
+                        <li class="pull-left">
+                            <button class="clear-btn eo-button-info" ng-click="$ctrl.data.fun.testList.clear()">
+                                {{'012100324'|translate}}
+                            </button>
+                        </li>
+                    </ul>
+                </header>
+                <article>
+                    <ul>
+                        <li class="param-form" data-ng-repeat="item in $ctrl.data.interaction.response.apiInfo.testHistory track by $index" data-ng-click="$ctrl.data.fun.testList.enter({item:item})">
+                            <ul>
+                                <li class="pull-left nessarity">
+                                    <label class="number">{{$index+1}}</label>
+                                    <label>
+                                        <a class="iconfont icon-shanchu eo-button-delete" data-ng-click="$ctrl.data.fun.testList.delete({item:item,$index:$index,$event:$event})"></a>
+                                    </label>
+                                </li>
+                                <li>
+                                    <ul class="param-info">
+                                        <li class="pull-left test-history-time">
+                                            <label>{{item.testTime}}</label>
+                                        </li>
+                                        <li class="pull-left test-history-code">
+                                            <label class="history-type" ng-class="{'eo-color-success':item.requestInfo.methodType==0,'eo-color-default':item.requestInfo.methodType==1,'eo-color-others':item.requestInfo.methodType==2,'eo-color-warning':item.requestInfo.methodType==6,'eo-color-danger':item.requestInfo.methodType==3,'eo-color-info':item.requestInfo.methodType==4,'eo-color-options':item.requestInfo.methodType==5}">{{item.requestInfo.method}}</label>
+                                        </li>
+                                        <li class="pull-left test-history-url">
+                                            <label>{{item.requestInfo.URL}}</label>
+                                        </li>
+                                        <li class="pull-right test-history-http-code">
+                                            <label ng-class="{'test-default-color':item.httpCodeType===1,'test-success-color':item.httpCodeType===2,'test-warning-color':item.httpCodeType===3,'test-error-color':item.httpCodeType===4||item.httpCodeType===5}">{{item.resultInfo.httpCode}}</label>
+                                        </li>
+                                        <li class="pull-right test-history-deny">
+                                            <label>{{item.resultInfo.testDeny}}ms</label>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </article>
+    <footer></footer>
+</div>

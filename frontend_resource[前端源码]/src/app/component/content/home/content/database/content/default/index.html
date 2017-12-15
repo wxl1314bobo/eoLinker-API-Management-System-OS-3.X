@@ -1,0 +1,42 @@
+<div class="common-table-div">
+    <header>
+        <ul class="title-ul">
+            <li class="btn-group-li">
+                <a class="eo-button-success common-btn" data-ng-click="$ctrl.data.fun.edit()"><span class="iconfont icon-tianjia"></span>{{'01000'|translate}}</a>
+                <a class="common-btn default-btn" data-ng-click="$ctrl.data.fun.import()"><span class="iconfont icon-shangchuan"></span>{{'01001'|translate}}</a>
+            </li>
+        </ul>
+    </header>
+    <article class="first-level-article">
+        <table>
+            <thead>
+                <tr>
+                    <th class="first-th">{{'01002'|translate}}</th>
+                    <th class="second-th">{{'01003'|translate}}</th>
+                    <th class="third-th">{{'01004'|translate}}</th>
+                    <th class="forth-th">{{'01005'|translate}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat='item in $ctrl.data.interaction.response.query' data-ng-click="$ctrl.data.fun.enter({item:item})">
+                    <th>{{item.dbName}}</th>
+                    <td>V&nbsp;{{item.dbVersion}}</td>
+                    <td>{{item.dbUpdateTime}}</td>
+                    <td>
+                        <div ng-hide="item.userType>1">
+                            <a class="home-function-edit" data-ng-click="$ctrl.data.fun.edit({item:item,$index:$index,$event:$event})"><span class="iconfont icon-bianji"></span>{{'01006'|translate}}</a>
+                            <a class="home-function-delete" data-ng-click="$ctrl.data.fun.delete({item:item,$index:$index,$event:$event})"><span class="iconfont icon-shanchu"></span>{{'01007'|translate}}</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="eo-none-tr" ng-if="$ctrl.data.interaction.response.query.length==0">
+                    <td colspan="5">{{'01008'|translate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <footer>
+        <div load-directive="$ctrl.data.fun.init(arg)">
+        </div>
+    </footer>
+</div>

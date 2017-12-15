@@ -1,0 +1,147 @@
+news-default {
+    header {
+        .title-ul {
+            @extend %TITLE-UL;
+            .btn-group-li {
+                button {
+                    @include eo-line(39px);
+                    border: none;
+                    background-color: #fff;
+                    li {
+                        &:hover {
+                            background: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .first-level-article {
+        padding-top: 65px;
+        border-bottom: 1px solid #e5e5e5;
+        overflow: hidden;
+        table {
+            width: 100%;
+            background: #fff;
+            font-size: 14px;
+            border-spacing: 0;
+            text-align: left;
+            text-indent: 10px;
+            thead,
+            tbody {
+                .first-th {
+                    width: 50px;
+                    text-align: center;
+                    text-indent: 0;
+                }
+                .second-th {
+                    min-width: 400px;
+                    width: 75%;
+                }
+                .third-th {
+                    min-width: 150px;
+                }
+                .forth-th {
+                    width: 50px;
+                    text-align: center;
+                    text-indent: 0;
+                }
+            }
+            thead {
+                font-weight: bold;
+            }
+        }
+        .thead-table {
+            text-align: left;
+            text-indent: 10px;
+            table-layout: fixed;
+            @include eo-line(43px);
+            tbody {
+                @include eo-table;
+            }
+        }
+        .tbody-table {
+            table-layout: fixed;
+            tbody {
+                .isRead {
+                    th,
+                    td {
+                        color: #999;
+                    }
+                }
+                tr {
+                    @include eo-line(43px);
+                    th {
+                        font-weight: initial;
+                    }
+                    td {
+                        color: #333;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                        .function-btn-group {
+                            text-indent: 0;
+                            a {
+                                color: #999;
+                                .iconfont {
+                                    font-size: 14px;
+                                    color: #999;
+                                    padding: 5px;
+                                }
+                                &:hover {
+                                    color: #333;
+                                    .iconfont {
+                                        color: #333;
+                                    }
+                                }
+                            }
+                            .function-edit {
+                                margin-right: 10px;
+                            }
+                            .function-delete {}
+                        }
+                    }
+                    td:nth-child(3),
+                    td:nth-child(2) {
+                        span {
+                            @include eo-line(20px);
+                            text-indent: 0;
+                            display: inline-block;
+                            border-radius: 3px;
+                            font-size: 12px;
+                            text-align: center;
+                            cursor: pointer;
+                            padding: 0 5px;
+                        }
+                    }
+                }
+                .tr-title {
+                    &:hover {
+                        background: #f0f0f0;
+                        cursor: pointer;
+                    }
+                }
+                .tr-detail {
+                    .detail-td {
+                        .detail-ul {
+                            padding-left: 10px;
+                            p {
+                                text-indent: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .tbody-table:nth-child(even) {
+            tr {
+                background: #fafafa;
+            }
+        }
+        .tbody-table:nth-child(odd) {
+            tr {
+                background: #fff;
+            }
+        }
+    }
+}

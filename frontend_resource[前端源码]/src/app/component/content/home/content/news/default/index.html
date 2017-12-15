@@ -1,0 +1,64 @@
+<div>
+    <header>
+        <ul class="title-ul" style="position: fixed;width: 100%;">
+            <li class="title-li">
+                <span class="pull-left icon">{{'0110'|translate}}</span>
+            </li>
+            <li class="btn-group-li">
+                <ul>
+                    <button data-ng-click="$ctrl.data.fun.clean()" ng-disabled="$ctrl.data.interaction.response.query.length<1">
+                        <li class="btn-li">
+                            <span class="iconfont icon-hotfill"></span>{{'0111'|translate}}
+                        </li>
+                    </button>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <article class="first-level-article">
+        <table class="thead-table">
+            <thead>
+                <tr>
+                    <th class="first-th">{{'0112'|translate}}</th>
+                    <th class="second-th">{{'0113'|translate}}</th>
+                    <th class="third-th">{{'0114'|translate}}</th>
+                    <th class="forth-th"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="eo-none-tr" ng-if="$ctrl.data.interaction.response.query.length==0">
+                    <td colspan="4">{{'0115'|translate}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="tbody-table" data-ng-repeat='item in $ctrl.data.interaction.response.query'>
+            <tbody>
+                <tr class="tr-title" data-ng-click="$ctrl.data.fun.read({item:item,$index:$index})" data-ng-class="{'isRead':item.isRead==1}">
+                    <th class="first-th">{{item.msgType==0?$ctrl.data.info.filter.system:$ctrl.data.info.filter.project}}</th>
+                    <td class="second-th">{{item.summary}}</td>
+                    <td class="third-th">{{item.msgSendTime}}</td>
+                    <td class="forth-th">
+                        <span class="iconfont " ng-class="{'icon-triangledownfill':!item.isClick,'icon-triangleupfill':item.isClick}"></span>
+                    </td>
+                </tr>
+                <tr class="tr-detail" ng-class="{'hidden':!item.isClick}">
+                    <td class="first-th"></td>
+                    <td colspan="3" class="detail-td">
+                        <ul class="detail-ul">
+                            <li data-ng-bind-html="item.msg">
+                            </li>
+                            <li class="function-btn-group">
+                                <a class="function-delete" data-ng-click="$ctrl.data.fun.delete({item:item,$index,$index})"><span class="iconfont icon-delete"></span>{{'0118'|translate}}</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+    <footer class="pageFooter" ng-class="{'hidden':$ctrl.data.interaction.response.query.length<1}">
+        <uib-pagination total-items="$ctrl.data.info.pagination.msgCount" items-per-page="$ctrl.data.info.pagination.pageSize" ng-model="$ctrl.data.info.pagination.page" max-size="$ctrl.data.info.pagination.maxSize" class="pagination-sm " boundary-link-Number="true" rotate="false" next-text="&#xe684;" previous-text="&#xe685;" ng-change="$ctrl.data.fun.pageChanged()"></uib-pagination>
+    </footer>
+    <div load-directive="$ctrl.data.fun.init(arg)">
+    </div>
+</div>

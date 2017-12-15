@@ -1,0 +1,748 @@
+$defaultFontFamily: "Helvetica Neue","Helvetica","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC","WenQuanYi Micro Hei","Arial",sans-serif;
+$defaultFontSize: 14px;
+$defaultColor: #333;
+$bodyWidth:1230px;
+$buttonDeleteBgColor:#f2f2f2;
+$buttonDeleteColor:#a3a3a3;
+$buttonDeleteBorderColor:#e5e5e5;
+$buttonDeleteFocusBgColor:#D32F2F;
+$buttonDeleteFocusBorderColor:#C62828;
+$buttonDeleteFocusColor:#fff;
+$buttonSuccessBgColor:#4CAF50;
+$buttonSuccessColor:#fff;
+$buttonSuccessFocusBgColor:#43A047;
+$buttonSuccessBorderColor:#43A047;
+$buttonSuccessFocusBorderColor:#4CAF50;
+$buttonSuccessFocusColor:#fff;
+$buttonDefaultBgColor:#f5f5f5;
+$buttonDefaultColor:#444;
+$buttonDefaultFocusBgColor:#fafafa;
+$buttonDefaultFocusColor:#444;
+$buttonDefaultBorderColor:rgba(0, 0, 0, .06);
+$buttonInfoBgColor:#2196F3;
+$buttonInfoColor:#fff;
+$buttonInfoFocusBgColor:#1E88E5;
+$buttonInfoFocusColor:#fff;
+$buttonInfoBorderColor:rgba(0, 0, 0, .21);
+$buttonDangerBgColor:#D32F2F;
+$buttonDangerColor:#fff;
+$buttonDangerBorderColor:#C62828;
+$buttonDangerFocusBgColor:#C62828;
+$buttonDangerFocusColor:#fff;
+$buttonDangerFocusBorderColor:#D32F2F;
+$buttonWarningBgColor:#FFB300;
+$buttonWarningColor:#fff;
+$buttonWarningBorderColor:#FFA000;
+$buttonWarningFocusBgColor:#D84A4A;
+$buttonWarningFocusColor:#fff;
+$buttonWarningFocusBorderColor:#D32F2F;
+* {
+    font-family: $defaultFontFamily;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    color: #333;
+    word-break: normal; //font-size: $defaultFontSize;
+}
+
+span,
+li,
+thead th,
+p {
+    cursor: default;
+    list-style-type: none;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+ol,
+ul {
+    li {
+        list-style-type: none;
+    }
+}
+
+body {
+    position: absolute;
+    background: #fff;
+    min-width: $bodyWidth;
+    width: 100%;
+    height: 100%;
+}
+
+a,
+button {
+    cursor: pointer;
+    text-decoration: none;
+    .iconfont {
+        cursor: pointer;
+    }
+    * {
+        cursor: pointer;
+    }
+    input[type=text] {
+        cursor: text;
+    }
+}
+
+textarea {
+    resize: none;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+input::-ms-reveal {
+    display: none;
+}
+
+select {
+    font: small-caption;
+    // font-size: 14px;
+    padding: 0 5px;
+    cursor: pointer;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.eo-blod {
+    font-weight: bold;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+@mixin EO-COLOR ($COLOR, $BORDER-COLOR, $BG-COLOR, $BORDER-TYPE:solid) {
+    background-color: $BG-COLOR;
+    border: 1px $BORDER-TYPE $BORDER-COLOR;
+    color: $COLOR;
+    * {
+        color: $COLOR;
+    }
+}
+
+@mixin EO-CHECKBOX ($height:23px, $line-height:23px) {
+    border: 1px solid #e5e5e5;
+    @include eo-line($height, $line-height);
+    width: $height;
+    font-size: 13px;
+    margin-right: 4px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.eo-none-tr {
+    background-color: #fff;
+    td {
+        text-align: center;
+        height: 150px;
+        line-height: 150px;
+        &:hover {
+            background-color: #fff;
+        }
+    }
+}
+
+@mixin eo-animation ($animation) {
+    -ms-animation: $animation;
+    -moz-animation: $animation;
+    -webkit-animation: $animation;
+    animation: $animation;
+}
+
+@mixin eo-line ($height, $line-height:$height) {
+    height: $height;
+    line-height: $line-height;
+}
+
+#particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow-y: hidden;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.wrap {
+    width: $bodyWidth;
+    height: auto;
+    margin: 0 auto;
+}
+
+.mask {
+    position: fixed;
+    z-index: -1;
+    background: #f8f8f8;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.eo-env {
+    margin-right: 5px;
+    .default-btn {
+        @include eo-line(30px, 31px);
+        display: inline-flex;
+        width: auto;
+        padding: 0 10px;
+        text-align: center;
+        text-indent: 0;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        color: #333;
+        .iconfont {
+            margin-right: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+        &:disabled {
+            border: 1px solid #ddd;
+            color: #ddd;
+            .iconfont {
+                color: #ddd;
+            }
+        }
+    }
+    .active-btn {
+        border: 1px solid $buttonSuccessFocusBorderColor;
+        color: $buttonSuccessFocusBorderColor;
+        .iconfont {
+            color: $buttonSuccessFocusBorderColor;
+        }
+    }
+    .message-ul {
+        .list-li {
+            @include eo-line(30px);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+
+.eo-sv-handle {
+    cursor: move;
+}
+
+.eo-input {
+    width: 250px;
+    height: 33px;
+    border: 1px solid #ddd;
+    text-indent: 10px;
+    background-color: #fff;
+    border-radius: 3px;
+    &:focus {
+        border-color: #43A047;
+    }
+}
+
+.eo-radio {
+    font-size: 14px;
+}
+
+.eo-checkbox {
+    border: 1px solid #dcdcdc;
+    @include eo-line(23px);
+    width: 23px;
+    font-size: 13px;
+    margin-right: 4px;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.eo-link {
+    color: #2196F3;
+}
+
+@mixin eo-table ($cursor:pointer, $oddBgColor:#fafafa, $evenBgColor:#fff, $hoverBgColor:#f0f0f0) {
+    tr:nth-child(odd) {
+        background: $oddBgColor;
+    }
+    tr:nth-child(even) {
+        background: $evenBgColor;
+    }
+    tr {
+        &:hover {
+            background: $hoverBgColor;
+            cursor: $cursor;
+        }
+    }
+    .eo-none-tr:nth-child(odd) {
+        background-color: #fff;
+        cursor: default;
+        td {
+            text-align: center;
+            @include eo-line(150px);
+            border-top: 1px solid #e5e5e5;
+            color: #999;
+        }
+        &:hover {
+            background-color: #fff;
+        }
+    }
+}
+
+@mixin eo-button ($bgColor, $color, $borderColor) {
+    background-color: $bgColor;
+    color: $color;
+    border: 1px solid $borderColor;
+    @include eo-line(32px);
+    cursor: pointer;
+    border-radius: 3px;
+    .iconfont,span {
+        color: $color;
+    }
+}
+
+.eo-button-delete {
+    @include eo-button($buttonDeleteBgColor, $buttonDeleteColor, $buttonDeleteBorderColor);
+    &:hover {
+        @include eo-button($buttonDeleteFocusBgColor, $buttonDeleteFocusColor, $buttonDeleteFocusBorderColor);
+    }
+}
+
+.eo-button-success {
+    @include eo-button($buttonSuccessBgColor, $buttonSuccessColor, $buttonSuccessBorderColor);
+    &:hover {
+        @include eo-button($buttonSuccessFocusBgColor, $buttonSuccessFocusColor, $buttonSuccessFocusBorderColor);
+    }
+}
+
+.eo-button-default {
+    @include eo-button($buttonDefaultBgColor, $buttonDefaultColor, $buttonDefaultBorderColor);
+    &:hover,
+    &:focus,
+    &:active {
+        @include eo-button($buttonDefaultFocusBgColor, $buttonDefaultFocusColor, $buttonDefaultBorderColor);
+    }
+}
+
+.eo-button-info {
+    @include eo-button($buttonInfoBgColor, $buttonInfoColor, $buttonInfoBorderColor);
+    &:hover,
+    &:focus,
+    &:active {
+        @include eo-button($buttonInfoFocusBgColor, $buttonInfoFocusColor, $buttonInfoBorderColor);
+    }
+}
+
+.eo-button-warning {
+    @include eo-button($buttonDangerBgColor, $buttonDangerColor, $buttonDangerBorderColor);
+    &:hover,
+    &:focus,
+    &:active {
+        @include eo-button($buttonDangerFocusBgColor, $buttonDangerFocusColor, $buttonDangerFocusBorderColor);
+    }
+}
+
+@mixin eo-color ($color, $borderColor) {
+    color: #fff;
+    background-color: $color;
+    border: 1px solid $borderColor;
+    border-radius: 3px;
+    * {
+        color: #fff;
+    }
+}
+
+.eo-color-default {
+    @include eo-color(#2196F3, #1E88E5);
+}
+
+.eo-color-success {
+    @include eo-color($buttonSuccessBgColor, $buttonSuccessBorderColor);
+}
+
+.eo-color-warning {
+    @include eo-color(#FFB300, #FFA000);
+}
+
+.eo-color-danger {
+    @include eo-color(#D32F2F, #C62828);
+}
+
+.eo-color-disable {
+    @include eo-color(#333, #000);
+}
+
+.eo-color-info {
+    @include eo-color(rgb(153, 153, 153), rgb(119, 119, 119));
+}
+
+.eo-color-others {
+    @include eo-color(#795548, #6D4C41);
+}
+
+.eo-color-options {
+    @include eo-color(#607D8B, #546E7A);
+}
+
+.eo-color-unuse {
+    @include eo-color(#9E9E9E, rgb(198, 62, 33));
+}
+
+.eo-status-default {
+    color: rgb(39, 107, 225);
+    * {
+        color: rgb(39, 107, 225);
+    }
+}
+
+.eo-status-success {
+    color: $buttonSuccessBgColor;
+    * {
+        color: $buttonSuccessBgColor;
+    }
+}
+
+.eo-status-warning {
+    color: #FF9800;
+    * {
+        color: #FF9800;
+    }
+}
+
+.eo-status-error {
+    color: $buttonDangerBgColor;
+    * {
+        color: $buttonDangerBgColor;
+    }
+}
+
+.eo-status-danger {
+    color: #9E9E9E;
+    * {
+        color: #9E9E9E;
+    }
+}
+
+//动画
+@keyframes flicker {
+    0% {
+        border: 1px solid #ddd;
+    }
+    50% {
+        border: 1px solid $buttonSuccessBorderColor;
+    }
+    100% {
+        border: 1px solid #ddd;
+    }
+}
+
+.eo-copy {
+    @include eo-animation(flicker 1s);
+}
+
+//modal
+@mixin eo-modal-color ($color, $bgColor) {
+    background-color: $bgColor;
+    border: 1px solid $color;
+    span {
+        color: $color;
+        .iconfont {
+            color: $color;
+        }
+    }
+}
+
+.eo-absolute {
+    position: absolute;
+}
+
+.opacity-none {
+    opacity: 0;
+}
+
+.eo-had-input-error {
+    input {
+        border: 1px solid #d85030;
+    }
+}
+
+.eo-input-error {
+    border: 1px solid #d85030;
+    &:focus {
+        border-color: #d85030;
+    }
+}
+
+.eo-input-success {
+    border: 1px solid $buttonSuccessBgColor;
+}
+
+//popover
+.popover {
+    position: absolute;
+    z-index: 2;
+    table {
+        border-spacing: 0;
+    }
+}
+
+.arrow {
+    border-style: solid;
+    border-width: 5px 10px 5px 0;
+    border-color: transparent #333 transparent transparent;
+}
+
+.popover-inner {
+    background-color: #333;
+    padding: 5px 10px;
+    min-width: 150px;
+    max-width: 215px;
+    .popover-content {
+        color: #fff;
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+//百分比-数字
+@mixin eo-height ($percent, $height) {
+    height: -webkit-calc(#{$percent} - #{$height});
+    height: -ms-calc(#{$percent} - #{$height});
+    height: -moz-calc(#{$percent} - #{$height});
+    height: calc(#{$percent} - #{$height});
+}
+
+@mixin eo-min-height ($percent, $height) {
+    min-height: -webkit-calc(#{$percent} - #{$height});
+    min-height: -ms-calc(#{$percent} - #{$height});
+    min-height: -moz-calc(#{$percent} - #{$height});
+    min-height: calc(#{$percent} - #{$height});
+}
+
+@mixin eo-max-height ($percent, $height) {
+    max-height: -webkit-calc(#{$percent} - #{$height});
+    max-height: -ms-calc(#{$percent} - #{$height});
+    max-height: -moz-calc(#{$percent} - #{$height});
+    max-height: calc(#{$percent} - #{$height});
+}
+
+@mixin eo-width ($percent, $width) {
+    width: -webkit-calc(#{$percent} - #{$width});
+    width: -ms-calc(#{$percent} - #{$width});
+    width: -moz-calc(#{$percent} - #{$width});
+    width: calc(#{$percent} - #{$width});
+}
+
+@mixin eo-max-width ($percent, $width) {
+    max-width: -webkit-calc(#{$percent} - #{$width});
+    max-width: -ms-calc(#{$percent} - #{$width});
+    max-width: -moz-calc(#{$percent} - #{$width});
+    max-width: calc(#{$percent} - #{$width});
+}
+
+@mixin eo-left ($percent, $left) {
+    left: -webkit-calc(#{$percent} - #{$left});
+    left: -ms-calc(#{$percent} - #{$left});
+    left: -moz-calc(#{$percent} - #{$left});
+    left: calc(#{$percent} - #{$left});
+}
+
+//加载动画
+@keyframes load {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.loading-content {
+    top: 109px;
+    @include eo-left(50%, 176px);
+    position: fixed;
+    z-index: 10;
+    .loading {
+        min-width: 350px;
+        max-width: 500px;
+        border-radius: 3px;
+        @include eo-modal-color(#e5e5e5, #fff);
+        box-shadow: 0px 10px 29px #ccc;
+        li {
+            @include eo-line(50px);
+            text-align: center;
+            color: #555;
+            font-size: 14px;
+            .iconfont {
+                font-size: 18px;
+                color: #555;
+                font-size: 14px;
+            }
+            div {
+                @include eo-animation(load 1.7s infinite ease);
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+//scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    //-webkit-border-radius: 10px;
+    //border-radius: 10px;
+    background: #fff;
+}
+
+
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #ccc; //-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+    background: #ddd;
+}
+
+
+
+
+/*分页*/
+
+.pageFooter {
+    text-align: center;
+    .pagination>li>a,
+    .pagination>li>span {
+        color: $buttonDefaultFocusColor; //height: 34px;
+        width: 35px;
+    }
+    .pagination>.disabled>a {
+        color: #e5e5e5;
+        cursor: default;
+    }
+    .pagination-prev,
+    .pagination-next {
+        border-radius: 3px;
+    }
+    .pagination>.active,
+    .pagination>.active:hover,
+    .pagination>.active:focus,
+    .pagination>.active,
+    .pagination>.active:hover,
+    .pagination>.active:focus {
+        background-color: $buttonSuccessFocusBgColor;
+        a {
+            color: #fff;
+        }
+    }
+    .pagination-jump {
+        margin: 20px 0;
+        color: $buttonDefaultFocusColor;
+        margin-top: 37px;
+        margin-left: 10px;
+        display: inline-block;
+        li {
+            @include eo-line(37px);
+            display: inline-block;
+            input {
+                @include eo-line(33px);
+                margin: 0 8px;
+                width: 55px;
+                border: 1px solid #dfdfdf;
+                background-color: #fff;
+            }
+            button {
+                width: 50px;
+            }
+            input {
+                text-indent: 1em;
+            }
+        }
+    }
+    .pagination-sm {
+        margin: 25px;
+        display: inline-block;
+        li {
+            width: 35px;
+            @include eo-line(35px, 36px);
+            background-color: #fff;
+            border: 1px solid $buttonDefaultBorderColor;
+            border-left: none;
+            text-align: center;
+            display: inline-flex;
+        }
+        .pagination-prev {
+            margin-right: 10px;
+            border-left: 1px solid $buttonDefaultBorderColor;
+        }
+        .pagination-next {
+            margin-left: 10px;
+            border-left: 1px solid $buttonDefaultBorderColor;
+        }
+        li:nth-child(2) {
+            border-left: 1px solid $buttonDefaultBorderColor;
+        }
+    }
+    .first-page {
+        border-radius: 3px 0 0 3px;
+    }
+    .last-page {
+        border-radius: 0 3px 3px 0;
+    }
+    .only-page {
+        border-radius: 3px;
+    }
+}
+
+//wangeditor
+.wangEditor-container {
+    .wangEditor-txt {
+        ol {
+            li {
+                list-style-type: decimal;
+            }
+        }
+        ul {
+            li {
+                list-style-type: initial;
+            }
+        }
+    }
+}
