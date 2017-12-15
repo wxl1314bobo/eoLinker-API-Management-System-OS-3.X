@@ -69,7 +69,7 @@ gulp.task('html', ['plug:timestamp', 'inject', 'partials'], function() {
         .pipe(jsFilter)
         //修复HTML图片地址
         .pipe($.replace('app/assets/', 'assets/'))
-        .pipe($.stripDebug())
+        // .pipe($.stripDebug())
         // .pipe($.uglify())
         .pipe(jsFilter.restore)
         //css 
