@@ -5,7 +5,7 @@
     "assetUrl":"app/",
     "COOKIE_CONFIG":{
       "path":"/",
-      "domain":"localhost"
+      "domain":"zixuan.website:8081"
     }
   },
   "production": {
@@ -18,7 +18,7 @@
     }
   },
   "test": {
-    "serverUrl": "http://localhost:8080",
+    "serverUrl": "http://zixuan.website:8081",
     "isDebug":false,
     "COOKIE_CONFIG":{
       "domain":"./"
