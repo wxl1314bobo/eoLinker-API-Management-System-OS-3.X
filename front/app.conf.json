@@ -1,6 +1,6 @@
 {
   "development": {
-    "serverUrl": "/eolinker_os/server/index.php",
+    "serverUrl": "http://zixuan.website:8082/index.php",
     "isDebug":true,
     "assetUrl":"app/",
     "COOKIE_CONFIG":{
@@ -9,12 +9,12 @@
     }
   },
   "production": {
-    "serverUrl": "./server/index.php",
+    "serverUrl": "http://zixuan.website:8082/index.php",
     "isDebug":false,
     "assetUrl":"",
     "COOKIE_CONFIG":{
       "path":"/",
-      "domain":".eolinker.com"
+      "domain":".zixuan.website"
     }
   },
   "test": {
