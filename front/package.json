@@ -48,7 +48,9 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "babel src -d lib"
+        "build": "babel src -d lib",
+        "gulp":"gulp"
+
     },
     "author": "riverLethe",
     "license": "ISC",
